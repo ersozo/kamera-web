@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar_camera_stream.html' %}
+  <div class="m-4 bg-gray-300">
+    <div class="flex flex-row px-28 py-28 pt-6 flex justify-center rounded-xl items-center">
+      <div class="m-32 bg-red-900 rounded-xl">
+            <img class="border rounded-xl" src="{{ stream_url }}" />
+      </div>
+    </div>
+  </div>
+{% endblock content %}

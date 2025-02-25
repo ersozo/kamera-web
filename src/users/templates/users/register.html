@@ -1,0 +1,80 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar_login.html' %}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Hesap Oluştur</h2>
+
+        {% if messages %}
+        <div class="mb-4">
+            <ul>
+                {% for message in messages %}
+                <li class="text-red-500 text-sm">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <div>
+                <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-600">
+                    Kullanıcı Adı
+                </label>
+                <input type="text" name="username" id="{{ form.username.id_for_label }}" 
+                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none 
+                    focus:ring-2 focus:ring-red-900 focus:border-red-900" 
+                    placeholder="Kullanıcı adınızı girin" required>
+            </div>
+
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-600">
+                    E-posta Adresi
+                </label>
+                <input type="email" name="email" id="{{ form.email.id_for_label }}" 
+                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none 
+                    focus:ring-2 focus:ring-red-900 focus:border-red-900" 
+                    placeholder="E-posta adresinizi girin" required>
+            </div>
+
+            <div>
+                <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-600">
+                    Parola
+                </label>
+                <input type="password" name="password1" id="{{ form.password1.id_for_label }}" 
+                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none 
+                    focus:ring-2 focus:ring-red-900 focus:border-red-900" 
+                    placeholder="Parolanızı girin" required>
+            </div>
+
+            <div>
+                <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-600">
+                    Parolayı Onayla
+                </label>
+                <input type="password" name="password2" id="{{ form.password2.id_for_label }}" 
+                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none 
+                    focus:ring-2 focus:ring-red-900 focus:border-red-900" 
+                    placeholder="Parolanızı tekrar girin" required>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md 
+                    hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-900 focus:ring-opacity-50">
+                    Kayıt Ol
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                Zaten bir hesabınız var mı? 
+                <a href="{% url 'login' %}" class="text-red-900 hover:text-gray-800">Giriş Yap</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

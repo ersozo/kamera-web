@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include "navbar.html" %}
+<div
+  class="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center bg-no-repeat"
+  style="background-image: url('{% static 'images/city.jpg' %}')"
+>
+    <div class="grid grid-cols-2 gap-4">
+      {% for plant in plants %}
+      <a
+        href="{% url 'plant_layout' plant_id=plant.id %}"
+        class="flex items-center justify-center w-64 h-48 p-6 bg-red-900 text-white rounded-xl shadow hover:bg-white hover:text-red-900 text-3xl uppercase"
+      >
+        {{ plant.name }}
+      </a>
+      {% endfor %}
+    </div>
+</div>
+{% endblock content %}

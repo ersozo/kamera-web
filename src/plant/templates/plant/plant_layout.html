@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+{% include 'navbar_plant_layout.html' %}
+<div class="m-4">
+  <div class="layout-container">
+    {% if plant.layout %}
+    <img src="{{ plant.layout.url }}" title="Plant Layout" class="layout" />
+    {% endif %} {% for camera in cameras %}
+    <a
+      href="{% url 'camera_stream_view' plant_id=plant.id camera_id=camera.id %}"
+      class="link"
+      target="_blank"
+      data-top="{{ camera.top }}"
+      data-left="{{ camera.left }}"
+      data-direction="{{ camera.direction }}"
+      title="{{ camera.ip_address }}  {{ camera.description }}"
+    >
+      {% if camera.description == "" %}
+        <img class="arrow-icon" src="{% static 'images/white-arrow.svg' %}" alt="">
+      {% else %}
+        <p>{{ camera.description|slice:":1" }}</p>
+      {% endif %}
+    </a>
+
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

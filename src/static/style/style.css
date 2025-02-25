@@ -1,0 +1,61 @@
+body {
+  background: rgb(127, 29, 29);
+}
+
+a.link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.layout-container {
+  position: relative;
+  max-width: 100%;
+}
+.layout {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.link {
+  position: absolute;
+  width: 22px; /* Fixed size */
+  height: 22px;
+  background-color: red;
+  border: solid;
+  /* border-color: black; */
+  border-width: 2px;
+  border-radius: 50%; /* Makes it circular */
+  transform: translate(-50%, -50%); /* Centers the point */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link:hover {
+  background-color: rgb(0, 255, 0);
+  /* color: red; */
+  border-color: red;
+}
+
+.arrow-icon {
+  position: absolute;
+  width: 16px; /* Fixed size for the arrow */
+  height: 16px;
+  transform: rotate(var(--arrow-rotation, 0deg)); /* Default rotation is 0 */
+  transition: transform 0.2s ease; /* Smooth rotation on hover */
+}
+
+.arrow-icon:hover {
+  filter: invert(65%) sepia(80%) saturate(1000%) hue-rotate(360deg)
+    brightness(99%) contrast(90%);
+}
+
+a:hover {
+  color: red;
+}
