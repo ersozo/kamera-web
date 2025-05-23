@@ -28,6 +28,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
+static/images
 
 # Virtual Environment
 venv/
@@ -48,6 +49,10 @@ ENV/
 # Misc
 .DS_Store
 Thumbs.db
+
+# Static files
+src/staticfiles/
+src/static
 .coverage
 htmlcov/
 .pytest_cache/
